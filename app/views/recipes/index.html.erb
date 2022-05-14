@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Recipes</h1>
+
+<div id="recipes">
+  <% @recipes.each do |recipe| %>
+    <%= render recipe %>
+    <p>
+      <%= link_to "Show this recipe", recipe %>
+    </p>
+  <% end %>
+</div>
+
+<%= form_with(url: recipes_path, method: "GET") do |form| %>
+  <%= form.label :query, "Search by ingredients:" %>
+  <%= form.text_field 'ingredients' %>
+
+  <%= form.submit 'Search', name: nil %>
+<% end %>

@@ -1,0 +1,29 @@
+version: '3.1'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DB_HOST: db
+      BUNDLE_PATH: /bundle_cache
+      GEM_HOME: /bundle_cache
+      GEM_PATH: /bundle_cache
+
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+      - bundle_cache:/bundle_cache
+    ports:
+      - 3000:3000
+    command: bundle exec rails server -b 0.0.0.0
+
+  db:
+    image: postgres:14.2
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+
+volumes:
+  bundle_cache:
