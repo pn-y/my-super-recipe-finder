@@ -9,10 +9,8 @@ Search form require comma separated ingredients.
 For running locally docker required. 
 
 - docker-compose run app bash
-
- - (run this inside the container)
- - inside docker run: rails db:setup
- - bundle install
-
+- (inside docker) rails db:setup
+- (inside docker) bundle install
+- (inside docker) exit
 - docker-compose run --service-ports app
 - open http://localhost:3000/recipes
